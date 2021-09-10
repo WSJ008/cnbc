@@ -1,5 +1,9 @@
 # VLESS Heroku
 
+**若需部署 V2Ray VLESS，请转到 [vless](https://github.com/googluck9012/vless.git) 分支。**
+**若需部署 V2Ray VMESS，请转到 [vmess](https://github.com/googluck9012/vmess.git) 分支。**
+**若需部署 V2Ray XRAY，请转到 [xray](https://github.com/googluck9012/xray.git) 分支。**
+
 ## 概述
 
 本专案用于在 Heroku 上部署 V2Ray WebSocket，在合理使用的程度下，本镜像不会因为大量占用资源而导致封号。
@@ -41,21 +45,12 @@
  3. AWS 绝大部分 IPv4 地址已被 Twitter 屏蔽
 
 反向代理：
-addEventListener(
-  "fetch",event => {
-     let url=new URL(event.request.url);
-     url.hostname="应用名称.herokuapp.com";
-     let request=new Request(url,event.request);
-     event. respondWith(
-       fetch(request)
-     )
-  }
-)
+<details>
+<summary>cloudflare workers example</summary>
 
-
-XRAY:
-const SingleDay = '应用程序名.herokuapp.com'
-const DoubleDay = '应用程序名.herokuapp.com'
+```js
+const SingleDay = 'appname.herokuapp.com'
+const DoubleDay = 'appname.herokuapp.com'
 addEventListener(
     "fetch",event => {
     
@@ -74,3 +69,22 @@ addEventListener(
         )
     }
 )
+```
+</details>
+
+<details>
+<summary>cloudflare workers example</summary>
+
+```js
+addEventListener(
+  "fetch",event => {
+     let url=new URL(event.request.url);
+     url.hostname="应用名称.herokuapp.com";
+     let request=new Request(url,event.request);
+     event. respondWith(
+       fetch(request)
+     )
+  }
+)
+```
+</details>
